@@ -16,6 +16,7 @@ timestep = 0.001
 graph_time = 7 # Amount of time to graph in seconds
 slowmotion = 1 # Time Advancer, 2 = 2x slower. 1 is theoretical real time.
 
+'''Experimental Values
 slope = np.radians(10.10) # Theta
 Theta = np.radians(-180) # Starts at 0 degrees on the sin circle. Goes under Y Axis, so becomes negative in oscillation.
 theta_cone = np.radians(8.8) # Theta of the cone, where the parallel axis of rotation lies
@@ -24,11 +25,25 @@ length = 20.2/100 # Meters. Eneter value in centimeteres.
 thread_position = 0.56
 com = 0.9 # Center of mass.. All forces are applied to this. This calculated in relationship to the origin point of where the cone oscillates.
 
+
+
+
+'''
+
+slope = np.radians(30) # Theta
+Theta = np.radians(-180) # Starts at 0 degrees on the sin circle. Goes under Y Axis, so becomes negative in oscillation.
+theta_cone = np.radians(15) # Theta of the cone, where the parallel axis of rotation lies
+mass = 0.02 # Kilograms
+length = 20.2/100 # Meters. Eneter value in centimeteres.
+thread_position = 0.56
+com = 0.9 # Center of mass.. All forces are applied to this. This calculated in relationship to the origin point of where the cone oscillates.
+
+
+
 gravity = 9.8 # Gravitational Acceleration
 friction_coef = 0.4   # Friction Coefficient, Experimentally Found
 rotational_fraction = 20 # Friction Coefficient divided by this is the rotational friction coefficient. Experimentally found.
 static_friction = 0.05 # Coefficient of normal force to find the critical threshhold of static friction.
-
 
 # Derived Variables
 grav_f = 9.8*mass
@@ -171,7 +186,7 @@ print("Bottom Y:",y)
 
 plt.xlabel('Time (ms)')
 plt.ylabel('Theta (Radians)')
-plt.show()
+#plt.show()
 plt.plot(break_static)
 
 
