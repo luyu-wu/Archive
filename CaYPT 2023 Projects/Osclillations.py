@@ -24,10 +24,6 @@ mass = 0.02 # Kilograms
 length = 20.2/100 # Meters. Eneter value in centimeteres.
 thread_position = 0.56
 com = 0.9 # Center of mass.. All forces are applied to this. This calculated in relationship to the origin point of where the cone oscillates.
-
-
-
-
 '''
 
 slope = np.radians(30) # Theta
@@ -95,6 +91,7 @@ x,y = 0,0
 print("Gravitation Potential Energy: ",g_potent)
 
 
+# [[ SIMULATION ]] #
 
 # I treat velocity forming the oscillation and movement of the screw differently. Shouldn't make a difference as you can just superimpose.
 graph = []
