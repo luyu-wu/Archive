@@ -30,7 +30,7 @@ area = 0
 
 
 
-# First quarternion
+# First quarter
 for i in range(pulse_length*quality):
     radians = i/(pulse_length*quality)
     area = area + ((math.sin(radians*math.pi*0.5)*0.04)/2.5264267293774414)*amptitude
