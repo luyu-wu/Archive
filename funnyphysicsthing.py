@@ -20,7 +20,7 @@ repeats = 100
 for i in range(repeats):
     accel = (distance*k)*timestep
     vx = vx + (accel/mass)*timestep
-    # vx = vx*0.99 # Dampening
+    vx = vx*0.99 # Dampening
     distance = distance - (vx*timestep)
     time = time + timestep
 
