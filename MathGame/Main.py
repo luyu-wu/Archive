@@ -233,9 +233,13 @@ def SettingsWindow():
             
 
 def ThreadSettings():
-    threading._start_new_thread(SettingsWindow,())
+    thread = threading.Thread(target=SettingsWindow, daemon=True)
+    thread.start()
 
-
+def ThreadAnalytics():
+    thread = threading.Thread(target=AnalyticsWindow, daemon=True)
+    thread.start()
+    
 # This function indexes through all past questions, applies a filter to make sure they apply to the requested filter, then collects and combines the data to create analytics.
 def analyticsFind(operators=[],negatives=0,decimals=0,magnitude=0):
     question_times = []
@@ -375,9 +379,6 @@ def AnalyticsWindow():
 
 # Similar to threading settings, this ensures that the main thread does not halt if the analytics Window has a bug.
 # TK also just seems to halt the proccess, its not simultaneous by default?
-def ThreadAnalytics():
-    threading._start_new_thread(AnalyticsWindow,())
-
 
 
 # Main Window Creation
@@ -593,11 +594,8 @@ def QuestionWindowThread():
         if GUI_Enabled:
             character_space = 0 
             text_lab.config(state=tk.NORMAL)
-
-            text_lab.delete("1.0","10.0")
-                
+            text_lab.delete("1.0","10.0")                
             text_lab.config(state=tk.DISABLED)
-
 
         questions_asked += 1
         print("[ QUESTION "+str(questions_asked)+"]")
@@ -621,7 +619,10 @@ def QuestionWindowThread():
         questions_data.append(question.__dict__) # Converts the Class into an array. NESSECARY due to JSON and saving complexities
         time.sleep(Sleep_Time)
 
-threading._start_new_thread(QuestionWindowThread,())
+# Start the question thread
+question_thread = threading.Thread(target=QuestionWindowThread, daemon=True)
+question_thread.start()
+
 if Debug_Mode:
     print("Passed Question Threading Start! :D")
 
@@ -632,3 +633,4 @@ if GUI_Enabled:
 else:
     while 1: # Prevents threads from ending when main thread reaches end in the case that there is no window loop running.
         time.sleep(1)
+
