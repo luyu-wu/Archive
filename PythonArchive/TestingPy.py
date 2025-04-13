@@ -1,5 +1,4 @@
 import math
-import numpy as np
 
 # Remove [space] from script
 def clean_string(strin):
